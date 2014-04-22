@@ -2,8 +2,14 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 
+@import "../bower_components/colors/sass/colors.scss";
+
 // bower:scss
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
+
+// Import styles for the podcast page
+@import "podcast";
 
 .browsehappy {
     margin: 0.2em 0;
