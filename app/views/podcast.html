@@ -11,7 +11,8 @@
 
 	<div class="subscribe">
 		<span class="price">$5 / mo</span>
-		<button type="button" class="subscribeButton btn btn-primary">Subscribe</a>
+		<button ng-if="!subscribed" type="button" class="subscribeButton btn btn-primary" ng-click="subscribe()">Subscribe</a>
+		<button ng-if="subscribed" type="button" class="subscribeButton btn btn-success">{{subscribeText}}</a>
 	</div>
 
 </div>

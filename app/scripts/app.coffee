@@ -12,11 +12,11 @@ angular
       .when '/',
         # templateUrl: 'views/main.html'
         # controller: 'MainCtrl'
-        templateUrl: 'views/twist.html'
-        controller: 'TwistCtrl'
-      .when '/twist',
-        templateUrl: 'views/twist.html'
-        controller: 'TwistCtrl'
+        templateUrl: 'views/podcast.html'
+        controller: 'PodcastCtrl'
+      .when '/podcast',
+        templateUrl: 'views/podcast.html'
+        controller: 'PodcastCtrl'
       .otherwise
         redirectTo: '/'
 
