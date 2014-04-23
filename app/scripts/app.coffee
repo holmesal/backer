@@ -8,13 +8,20 @@ angular
     'ngRoute',
     'firebase'
   ])
-  .config ($routeProvider) ->
+  .config ($routeProvider, $locationProvider) ->
     $routeProvider
       .when '/',
         templateUrl: 'views/main.html'
         controller: 'MainCtrl'
         # templateUrl: 'views/podcast.html'
         # controller: 'PodcastCtrl'
+      .when '/discover',
+        templateUrl: 'views/discover.html'
+        controller: 'DiscoverCtrl'
+      .when '/login',
+        templateUrl: 'views/login.html'
+        controller: 'LoginCtrl'
+      # Must be at the bottom, to miss all the other routes
       .when '/:vanity',
         templateUrl: 'views/feed.html'
         controller: 'FeedCtrl'
@@ -23,7 +30,12 @@ angular
       .otherwise
         redirectTo: '/'
 
+    $locationProvider.html5Mode true
+
   .run ($rootScope, $location) ->
+
+    # Don't allow shortnames to be the same as actual routes
+    $rootScope.notAllowed = ['discover', 'login']
 
     $rootScope.firebaseURL = 'http://podcast.firebaseio.com'
 

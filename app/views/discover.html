@@ -1,0 +1,6 @@
+<div ng-repeat="(shortname,feed) in feeds">
+	<h1>{{feed.name}}</h1>
+	<p>${{feed.cost}} / mo</p>
+	<a ng-href="/#{{shortname}}">View feed</a>
+	<hr>
+</div>

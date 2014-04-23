@@ -8,8 +8,9 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
-// Import styles for the podcast page
+// Import styles for the various pages
 @import "feed";
+@import "login";
 
 .browsehappy {
     margin: 0.2em 0;
@@ -20,7 +21,6 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 
 /* Space out content a bit */
 body {
-    padding-top: 20px;
     padding-bottom: 20px;
 }
 
