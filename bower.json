@@ -11,7 +11,8 @@
     "angular-cookies": "1.2.15",
     "angular-sanitize": "1.2.15",
     "angular-route": "1.2.15",
-    "colors": "~0.2.0"
+    "colors": "~0.2.0",
+    "angularfire": "~0.7.1"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15",

@@ -1,0 +1,19 @@
+
+<div class="feed">
+	<!-- Vimeo embed, for now -->
+	<iframe class="vimeo" src="//player.vimeo.com/video/44598039" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+	<!-- Podcast info -->
+	<div class="info">
+		<p class="title">{{feed.name}}</p>
+		<p class="what">Extra episodes, uncut interviews, outtakes, and personal messages.</p>
+	</div>
+
+	<div class="subscribe">
+		<span class="price">${{feed.cost}} / mo</span>
+		<button ng-if="!subscribed" type="button" class="subscribeButton btn btn-primary" ng-click="subscribe()">Subscribe</button>
+		<button ng-if="subscribed" type="button" class="subscribeButton btn btn-success">{{subscribeText}}</button>
+		<span class="deets" ng-if="!subscribed">Your subscription will be added to iTunes</span>
+	</div>
+
+</div>
