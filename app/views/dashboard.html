@@ -1,0 +1,22 @@
+<div class="stats">Some stats</div>
+<hr>
+<div class="insights">Insights</div>
+<hr>
+<div class="users">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Title</th>
+				<th>Redeemed</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="subscriber in feed.subscribers">
+				<td>{{subscriber.name}}</td>
+				<td>{{subscriber.level.name}}</td>
+				<td>{{subscriber.perks.redeemed}} / {{subscriber.perks.qualified}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

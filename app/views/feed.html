@@ -1,13 +1,15 @@
 <div class="feed">
 
 	<!-- Top half, very visual -->
-	<div class="topHalf" ng-style="{'background-image':'url(http://lorempixel.com/400/200/abstract)'}">
+	<!-- <div class="topHalf" ng-style="{'background-image':'url({{feed.coverImage}})'}"> -->
+	<div class="topHalf" ng-style="{'background-image':getCoverImage(feed)}">
 		<div class="tint"></div>
 
 		<!-- Deets about the cast -->
 		<div class="content">
 			<div class="text">
 				<p class="name">{{feed.name}}</p>
+				<p class="perkSummary">{{feed.perkSummary}}</p>
 			</div>
 
 		</div>
@@ -23,6 +25,8 @@
 	<div class="bottomHalf">
 		<!-- <p>Current level: {{currentLevel}} with cost: {{feed.levels[currentLevel].cost}}</p> -->
 		<odometer cost="feed.levels[currentLevel].cost"></odometer>
+		{{feed.levels[currentLevel].name}}
+		<br>
 		<button ng-click="currentLevel = currentLevel + 1" ng-show="currentLevel < feed.levels.length - 1">Next level!</button>
 		<button ng-click="currentLevel = currentLevel - 1" ng-show="currentLevel > 0">Previous level!</button>
 		<hr>

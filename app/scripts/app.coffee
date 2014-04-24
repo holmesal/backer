@@ -21,6 +21,9 @@ angular
       .when '/login',
         templateUrl: 'views/login.html'
         controller: 'LoginCtrl'
+      .when '/dashboard',
+        templateUrl: 'views/dashboard.html'
+        controller: 'DashboardCtrl'
       # Must be at the bottom, to miss all the other routes
       .when '/:vanity',
         templateUrl: 'views/feed.html'
