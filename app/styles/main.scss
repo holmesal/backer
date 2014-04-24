@@ -2,13 +2,17 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 
-@import "../bower_components/colors/sass/colors.scss";
-
 // bower:scss
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+@import "../bower_components/animate-sass/animate.scss";
 // endbower
 
+// @import "../bower_components/colors/sass/colors.scss";
+// @import "../bower_components/animate-sass/animate.scss";
+@import "../bower_components/odometer/themes/odometer-theme-default.css";
+
 // Import styles for the various pages
+// @import "animate";
 @import "feed";
 @import "login";
 
