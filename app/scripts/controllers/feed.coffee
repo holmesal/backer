@@ -29,6 +29,7 @@ angular.module('podcastApp')
 					text: 'This Week in Startups messenger bag'
 				,
 					text: '25% off all LAUNCH event tickets'
+					image: 'http://www.valleyvet.com/images/worming-your-kitten.png'
 				,
 					text: 'Access to Show Discussions on Guests and Themes']
 		, 

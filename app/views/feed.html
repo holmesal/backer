@@ -38,7 +38,7 @@
 
 			<!-- Right side -->
 			<div class="col-md-8 rightCol">
-				<div class="level" ng-repeat="level in feed.levels | reverse" ng-show="currentLevel >= (feed.levels.length - 1 - $index)">
+				<div class="level" ng-repeat="level in feed.levels | reverse" ng-if="currentLevel >= (feed.levels.length - 1 - $index)">
 					<div class="perk" ng-repeat="perk in level.perks">
 						<div class="meta">
 							<div class="plus" ng-class="{visible: currentLevel >= (feed.levels.length - $parent.$index)}">+</div>
@@ -46,7 +46,12 @@
 								<img ng-src="images/{{level.icon}}.svg">
 							</div>
 						</div>
-						<div class="content">{{perk.text}}</div>
+						<div class="content">
+							<p class="text">{{perk.text}}</p>
+							<div class="imageWrapper" ng-if="perk.image">
+								<img ng-src="{{perk.image}}">
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

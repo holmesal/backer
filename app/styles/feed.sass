@@ -1,7 +1,7 @@
 @import 'compass'
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap'
 @import "../bower_components/colors/sass/colors"
-@import "../bower_components/animate-sass/animate"
+// @import "../bower_components/animate-sass/animate"
 @import ../bower_components/sass-mediaqueries/media-queries
 
 =fillContainer
@@ -10,6 +10,14 @@
 	height: 100%
 	top: 0
 	left: 0
+
+=useGPU
+	-webkit-transform: translateZ(0)
+	-moz-transform: translateZ(0)
+	-ms-transform: translateZ(0)
+	-o-transform: translateZ(0)
+	transform: translateZ(0)
+
 
 
 .feed
@@ -146,10 +154,10 @@
 			// margin-left: auto
 			// margin-right: auto
 
-		.level
+		// .level
 
-			&.ng-enter
-				animation: fadeInUp 1s
+		// 	&.ng-enter
+		// 		animation: fadeInUp 1s
 
 
 		.leftCol
@@ -184,6 +192,31 @@
 
 			.level
 
+				+useGPU
+				// ng-if animation for level
+				&.ng-enter, &.ng-leave
+					-webkit-transform: translate3d(0,0,0)
+					-webkit-transition: 0.3s linear all
+					transition: 0.3s linear all
+					overflow: hidden
+
+				&.ng-enter
+					opacity: 0
+					max-height: 0px
+
+				&.ng-enter-active
+					opacity: 1
+					max-height: 999px
+
+				&.ng-leave
+					opacity: 1
+					max-height: 999px
+					// height: auto
+
+				&.ng-leave-active
+					opacity: 0
+					max-height: 0px
+
 				.perk
 
 					// background-color: $red
@@ -201,6 +234,11 @@
 						width: 90%
 						padding-left: 20px
 
+						.imageWrapper
+							text-align: center
+							img
+								max-width: 100%
+
 					.plus, .icon
 						width: 50%
 						float: left
@@ -213,10 +251,8 @@
 						&.visible
 							opacity: 1
 
-					// .plus
-					// 	background-color: $teal 
-					// .icon
-					// 	background-color: $blue
+
+
 
 
 
