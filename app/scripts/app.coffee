@@ -49,3 +49,6 @@ angular
       console.log 'failed to change route - redirecting to landing'
       $location.path '/'
 
+    # Attach fastclick
+    FastClick.attach document.body
+

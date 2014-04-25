@@ -1,0 +1,5 @@
+<div class="shifter" ng-style="{'left':hw-currentLevel*spacing}">
+	<span class="level" ng-repeat="level in levels" ng-style="{'left':spacing*$index,'width':spacing,'margin-left':-spacing/2}" ng-click="focusOn($index)">{{level.name}}</span>
+</div>
+<div class="mask left" ng-show="currentLevel > 0" ng-click="levelDown()"></div>
+<div class="mask right" ng-show="currentLevel < levels.length - 1" ng-click="levelUp()"></div>

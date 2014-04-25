@@ -1,4 +1,4 @@
-<div class="feed">
+<div class="feed" ng-keydown="keyPressed($event)">
 
 	<!-- Top half, very visual -->
 	<!-- <div class="topHalf" ng-style="{'background-image':'url({{feed.coverImage}})'}"> -->
@@ -16,19 +16,23 @@
 
 		<!-- Subscribe button -->
 			<div class="subscribeWrapper">
-				<button ng-if="!subscribed" type="button" class="subscribeButton btn btn-primary" ng-click="subscribe()">Subscribe</button>
+				<button ng-if="!subscribed" type="button" class="subscribeButton" ng-click="subscribe()">Back This</button>
 				<button ng-if="subscribed" type="button" class="subscribeButton btn btn-success">{{subscribeText}}</button>
 			</div>
 
 	</div>
 
 	<div class="bottomHalf">
-		<!-- <p>Current level: {{currentLevel}} with cost: {{feed.levels[currentLevel].cost}}</p> -->
+
+		<!-- The level slider -->
+		<levels current="currentLevel" all="feed.levels" up="levelUp()" down="levelDown()"></levels>
+
+		<!-- The odometer -->
 		<odometer cost="feed.levels[currentLevel].cost"></odometer>
-		{{feed.levels[currentLevel].name}}
+
 		<br>
-		<button ng-click="currentLevel = currentLevel + 1" ng-show="currentLevel < feed.levels.length - 1">Next level!</button>
-		<button ng-click="currentLevel = currentLevel - 1" ng-show="currentLevel > 0">Previous level!</button>
+		<button ng-click="levelUp()" ng-show="currentLevel < feed.levels.length - 1">Next level!</button>
+		<button ng-click="levelDown()" ng-show="currentLevel > 0">Previous level!</button>
 		<hr>
 		<div class="level" ng-repeat="level in feed.levels | reverse" ng-show="currentLevel >= (feed.levels.length - 1 - $index)">
 			<!-- {{currentLevel}} >= {{feed.levels.length - 1 - $index}} -->

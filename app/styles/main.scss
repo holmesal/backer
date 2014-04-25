@@ -9,6 +9,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 // @import "../bower_components/colors/sass/colors.scss";
 // @import "../bower_components/animate-sass/animate.scss";
 @import "../bower_components/odometer/themes/odometer-theme-default.css";
+@import "../bower_components/sass-mediaqueries/media-queries";
 
 // Import styles for the various pages
 // @import "animate";
@@ -78,6 +79,14 @@ body {
 
 .marketing p + h4 {
     margin-top: 28px;
+}
+
+
+.container{
+    @include max-screen($screen-sm){
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 /* Responsive: Portrait tablets and up */

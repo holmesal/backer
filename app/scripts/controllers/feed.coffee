@@ -36,9 +36,28 @@ angular.module('podcastApp')
 			$scope.currentLevel = 0
 		, 1000
 
+		# Handle next/previous levels
+		$scope.levelUp = ->
+			if $scope.currentLevel < $scope.feed.levels.length - 1
+				$scope.currentLevel += 1
+
+		$scope.levelDown = ->
+			if $scope.currentLevel > 0
+				$scope.currentLevel -= 1
+
 		# Handle requests for cover image. Ran out of ' and "
 		$scope.getCoverImage = (feed) ->
 			"url('#{feed.coverImage}')"
+
+		# Handle arrow key presses
+		$scope.$on 'keyDown', (event, data) ->
+			console.log data
+			console.log data.which
+			switch data.which
+				when 39
+					$scope.levelUp()
+				when 37
+					$scope.levelDown()
 
 		# Subscribe / unsubscribe flow
 
