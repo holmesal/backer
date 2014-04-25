@@ -62,16 +62,21 @@
 	.bottomHalf
 		padding-top: 50px
 		padding-bottom: 50px
-		padding-left: 20%
-		padding-right: 20%
+		padding-left: 13%
+		padding-right: 13%
+
 
 		levels
 			display: block
 			width: 100%
-			height: 50px
+			height: 70px
 			position: relative
 			// background-color: $red
 			overflow: hidden
+			border-bottom: 1px solid $gray
+			margin-bottom: 50px
+
+
 
 			// Das masken
 			// border-width: 20px
@@ -82,20 +87,36 @@
 				position: absolute
 				height: 100%
 				top: 0
-				transition: 0.3s linear all
+				transition: 0.3s ease-in-out all
 				.level
 					position: absolute
 					top: 0
 					height: 100%
 					text-align: center
-					// background-color: $blue
+					opacity: 0.3
+					transition: 0.3s linear opacity
+
+					&:hover
+						cursor: pointer
+
+					.icon
+						height: 20px
+
+					.name
+						margin-top: 10px
+
+					&.active
+						opacity: 1
 
 			.mask
-				width: 80px
+				width: 20px
 				height: 100%
 				position: absolute
 				z-index: 200
 				top: 0
+
+				&:hover
+					cursor: pointer
 
 				&.left
 					left: 0
@@ -129,6 +150,77 @@
 
 			&.ng-enter
 				animation: fadeInUp 1s
+
+
+		.leftCol
+			text-align: center
+
+			.odometerWrapper
+				text-align: center
+				display: inline-block
+				$brdr: 1px solid black
+				border-top: $brdr
+				border-bottom: $brdr
+				.odometer
+					font-size: 50pt
+					font-weight: 100
+					// Want to fade out the numbers faster, but can't interfere with the dial transitions
+					// transition: 0.3s linear opacity
+					&.faded
+						opacity: 0.1
+
+				.cashMoney
+					vertical-align: top
+					font-weight: 200
+					font-size: 20pt
+
+			.month
+				text-align: center
+				padding-top: 10px
+
+
+
+		.rightCol
+
+			.level
+
+				.perk
+
+					// background-color: $red
+					overflow: auto
+					padding-bottom: 20px
+
+					.meta, .content
+						float: left
+						height: 100%
+
+					.meta
+						width: 10%
+
+					.content
+						width: 90%
+						padding-left: 20px
+
+					.plus, .icon
+						width: 50%
+						float: left
+						text-align: center
+						img 
+							height: 12px
+
+					.plus
+						opacity: 0
+						&.visible
+							opacity: 1
+
+					// .plus
+					// 	background-color: $teal 
+					// .icon
+					// 	background-color: $blue
+
+
+
+				
 
 
 	

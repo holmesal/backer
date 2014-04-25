@@ -15,10 +15,10 @@
 		</div>
 
 		<!-- Subscribe button -->
-			<div class="subscribeWrapper">
-				<button ng-if="!subscribed" type="button" class="subscribeButton" ng-click="subscribe()">Back This</button>
-				<button ng-if="subscribed" type="button" class="subscribeButton btn btn-success">{{subscribeText}}</button>
-			</div>
+		<div class="subscribeWrapper">
+			<button ng-if="!subscribed" type="button" class="subscribeButton" ng-click="subscribe()">Back This</button>
+			<button ng-if="subscribed" type="button" class="subscribeButton btn btn-success">{{subscribeText}}</button>
+		</div>
 
 	</div>
 
@@ -27,15 +27,29 @@
 		<!-- The level slider -->
 		<levels current="currentLevel" all="feed.levels" up="levelUp()" down="levelDown()"></levels>
 
-		<!-- The odometer -->
-		<odometer cost="feed.levels[currentLevel].cost"></odometer>
+		<div class="row">
 
-		<br>
-		<button ng-click="levelUp()" ng-show="currentLevel < feed.levels.length - 1">Next level!</button>
-		<button ng-click="levelDown()" ng-show="currentLevel > 0">Previous level!</button>
-		<hr>
-		<div class="level" ng-repeat="level in feed.levels | reverse" ng-show="currentLevel >= (feed.levels.length - 1 - $index)">
-			<!-- {{currentLevel}} >= {{feed.levels.length - 1 - $index}} -->
-			<p ng-repeat="perk in level.perks">{{perk}}</p>
+			<!-- Left side -->
+			<div class="col-md-4 leftCol">
+				<!-- The odometer -->
+				<odometer cost="feed.levels[currentLevel].cost"></odometer>
+				<p class="month">month</p>
+			</div>
+
+			<!-- Right side -->
+			<div class="col-md-8 rightCol">
+				<div class="level" ng-repeat="level in feed.levels | reverse" ng-show="currentLevel >= (feed.levels.length - 1 - $index)">
+					<div class="perk" ng-repeat="perk in level.perks">
+						<div class="meta">
+							<div class="plus" ng-class="{visible: currentLevel >= (feed.levels.length - $parent.$index)}">+</div>
+							<div class="icon">
+								<img ng-src="images/{{level.icon}}.svg">
+							</div>
+						</div>
+						<div class="content">{{perk.text}}</div>
+					</div>
+				</div>
+			</div>
 		</div>
+		
 </div>

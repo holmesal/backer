@@ -10,28 +10,55 @@ angular.module('podcastApp')
 		$scope.feed.levels = [
 			cost: 2
 			name: 'Broke-Ass Fan'
-			perks: ['Private Access to Pre-tape episode live feed (not available to the public)',
-				'TWiST list Email Group',
-				'Guaranteed seat at TWiST Live Events',
-				'Twitter thank you',
-				'First dibs to appear on Ask Jason']
+			icon: 'grad'
+			perks: [
+					text: 'Private Access to Pre-tape episode live feed (not available to the public)'
+				,
+					text: 'TWiST list Email Group'
+				,
+					text: 'Guaranteed seat at TWiST Live Events'
+				,
+					text: 'Twitter thank you'
+				,
+					text: 'First dibs to appear on Ask Jason']
 		,
-			cost: 10
-			name: 'Fan'
-			perks: ['This Week in Startups messenger bag',
-				'25% off all LAUNCH event tickets',
-				'Access to Show Discussions on Guests and Themes']
-		, 
 			cost: 20
+			name: 'Fan'
+			icon: 'bbcap'
+			perks: [
+					text: 'This Week in Startups messenger bag'
+				,
+					text: '25% off all LAUNCH event tickets'
+				,
+					text: 'Access to Show Discussions on Guests and Themes']
+		, 
+			cost: 100
 			name: 'Super Fan'
-			perks: ['On air thank you',
-				'Bronze Pro Subscription to the LAUNCH Ticker (http://launch.co/promembership)',
-				'Office Hours Golden Ticket for TWiST Live events',
-				'Visit the Studio for a live taping!']
+			icon: 'crown'
+			perks: [
+					text: 'On air thank you'
+				,
+					text: 'Bronze Pro Subscription to the LAUNCH Ticker (http://launch.co/promembership)'
+				,
+					text: 'Office Hours Golden Ticket for TWiST Live events'
+				,
+					text: 'Visit the Studio for a live taping!']
+		,
+			cost: 200
+			name: 'Uber Fan'
+			icon: 'crown'
+			perks: [
+					text: 'On air thank you'
+				,
+					text: 'Bronze Pro Subscription to the LAUNCH Ticker (http://launch.co/promembership)'
+				,
+					text: 'Office Hours Golden Ticket for TWiST Live events'
+				,
+					text: 'Visit the Studio for a live taping!']
 		]
 
 		# Set level to -1, then init 1 second after page load
-		$scope.currentLevel = -1
+		$scope.currentLevel = -2
 		$timeout ->
 			$scope.currentLevel = 0
 		, 1000
