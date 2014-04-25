@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module('podcastApp')
-.directive('levels', ->
+.directive('levels', ($timeout) ->
 	templateUrl: 'views/directives/levels.html'
 	restrict: 'E'
 	scope:
@@ -15,7 +15,15 @@ angular.module('podcastApp')
 		calcWidth = ->
 			scope.width = element.width()
 			scope.hw = scope.width/2
-			scope.spacing = scope.width / 4
+			# Tablet -> desktop should see multiple options onscreen
+			if window.outerWidth > 768
+				scope.spacing = scope.width / 4
+			# Mobile only sees one option
+			else
+				scope.spacing = scope.width
+
+			# Force a digest cycle, if not already in one
+			$timeout ->
 
 		scope.focusOn = (index) ->
 			scope.currentLevel = index
@@ -24,7 +32,7 @@ angular.module('podcastApp')
 			console.log "level changed to #{level}"
 
 		# Bind to window resize
-		angular.element('window').bind 'resize', ->
+		angular.element(window).bind 'resize', ->
 			calcWidth()
 
 		# Calc the width on page load

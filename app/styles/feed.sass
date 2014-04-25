@@ -19,12 +19,11 @@
 	transform: translateZ(0)
 
 
-
 .feed
 	
 	background-color: $white
 	// Desktops should get some padding on top
-	@include min-screen($screen-xs)
+	@include min-screen($screen-sm)
 		margin-top: 50px
 		margin-bottom: 50px
 
@@ -69,21 +68,27 @@
 
 	.bottomHalf
 		padding-top: 50px
-		padding-bottom: 50px
-		padding-left: 13%
-		padding-right: 13%
+		padding-left: 15px
+		padding-right: 15px
+		@include min-screen($screen-xs)
+			padding-left: 13%
+			padding-right: 13%
+			padding-bottom: 50px
 
 
 		levels
 			display: block
 			width: 100%
-			height: 70px
+			height: 50px
 			position: relative
 			// background-color: $red
 			overflow: hidden
-			border-bottom: 1px solid $gray
-			margin-bottom: 50px
 
+			// Space things out more on desktop
+			@include min-screen($screen-sm)
+				height: 70px
+				border-bottom: 1px solid $gray
+				margin-bottom: 50px
 
 
 			// Das masken
@@ -109,6 +114,8 @@
 
 					.icon
 						height: 20px
+						&.mobile
+							margin-right: 10px
 
 					.name
 						margin-top: 10px
@@ -162,29 +169,100 @@
 
 		.leftCol
 			text-align: center
+			padding-bottom: 30px
 
-			.odometerWrapper
+			.odometerRow
+				position: relative
+				max-width: 300px
 				text-align: center
-				display: inline-block
-				$brdr: 1px solid black
-				border-top: $brdr
-				border-bottom: $brdr
-				.odometer
-					font-size: 50pt
-					font-weight: 100
-					// Want to fade out the numbers faster, but can't interfere with the dial transitions
-					// transition: 0.3s linear opacity
-					&.faded
-						opacity: 0.1
+				margin-left: auto
+				margin-right: auto
 
-				.cashMoney
-					vertical-align: top
-					font-weight: 200
-					font-size: 20pt
+				.odometerWrapper
+					text-align: center
+					display: inline-block
+					$brdr: 1px solid black
+					border-top: $brdr
+					border-bottom: $brdr
+					.odometer
+						font-size: 50pt
+						font-weight: 100
+						line-height: 100%
+						&.faded
+							opacity: 0.1
 
-			.month
-				text-align: center
-				padding-top: 10px
+						.odometer-digit
+							vertical-align: initial
+
+					.cashMoney
+						vertical-align: top
+						font-weight: 200
+						font-size: 20pt
+
+
+				$buttonOpacity: 0.6
+				$fadeDistance: 10px
+
+				.levelUp, .levelDown
+					$buttonSize: 50px
+					width: $buttonSize
+					height: $buttonSize
+					position: absolute
+					top: 50%
+					margin-top: -$buttonSize/2
+					text-align: center
+					opacity: $buttonOpacity
+					// transtion: 0.3s ease-in-out all
+
+					// show-hide animations
+					&.ng-enter, &.ng-leave
+						-webkit-transition: 0.2s ease-in-out all
+						transition: 0.2s ease-in-out all
+					
+
+					img
+						$imgSize: 25px
+						width: $imgSize
+						height: $imgSize
+						margin-top: ($buttonSize - $imgSize) / 2
+
+					&:hover
+						cursor: pointer
+						opacity: 1
+
+				.levelUp
+					right: 0
+					&.ng-enter
+						right: $fadeDistance
+						opacity: 0
+					&.ng-enter-active
+						right: 0
+						opacity: $buttonOpacity
+					&.ng-leave
+						right: 0
+						opacity: $buttonOpacity
+					&.ng-leave-active
+						right: $fadeDistance
+						opacity: 0
+
+				.levelDown
+					left: 0
+					&.ng-enter
+						left: $fadeDistance
+						opacity: 0
+					&.ng-enter-active
+						left: 0
+						opacity: $buttonOpacity
+					&.ng-leave
+						left: 0
+						opacity: $buttonOpacity
+					&.ng-leave-active
+						left: $fadeDistance
+						opacity: 0
+
+				.month
+					text-align: center
+					padding-top: 10px
 
 
 
@@ -196,8 +274,8 @@
 				// ng-if animation for level
 				&.ng-enter, &.ng-leave
 					-webkit-transform: translate3d(0,0,0)
-					-webkit-transition: 0.3s linear all
-					transition: 0.3s linear all
+					-webkit-transition: 0.3s ease-in-out all
+					transition: 0.3s ease-in-out all
 					overflow: hidden
 
 				&.ng-enter

@@ -30,14 +30,22 @@
 		<div class="row">
 
 			<!-- Left side -->
-			<div class="col-md-4 leftCol">
+			<div class="col-sm-4 leftCol">
 				<!-- The odometer -->
-				<odometer cost="feed.levels[currentLevel].cost"></odometer>
+				<div class="odometerRow">
+					<odometer cost="feed.levels[currentLevel].cost"></odometer>
+					<div class="levelUp visible-xs" ng-if="currentLevel < feed.levels.length - 1 && currentLevel >= 0" ng-click="levelUp()">
+						<img src="images/arrow-right.svg">
+					</div>
+					<div class="levelDown visible-xs" ng-if="currentLevel > 0" ng-click="levelDown()">
+						<img src="images/arrow-left.svg">
+					</div>
+				</div>
 				<p class="month">month</p>
 			</div>
 
 			<!-- Right side -->
-			<div class="col-md-8 rightCol">
+			<div class="col-sm-8 rightCol">
 				<div class="level" ng-repeat="level in feed.levels | reverse" ng-if="currentLevel >= (feed.levels.length - 1 - $index)">
 					<div class="perk" ng-repeat="perk in level.perks">
 						<div class="meta">
