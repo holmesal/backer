@@ -8,6 +8,7 @@ angular
 		'ngRoute',
 		'firebase',
 		'ngAnimate'
+		# 'firebaseResolver'
 	])
 	.config ($routeProvider, $locationProvider) ->
 		$routeProvider
@@ -30,7 +31,13 @@ angular
 				templateUrl: 'views/feed.html'
 				controller: 'FeedCtrl'
 				resolve:
-					feed: (Feed, $route) -> Feed.getFeed $route.current.params.vanity
+					# user: (Resolver, $route) ->
+					# 	Resolver.resolve "vanity/#{$route.current.params.vanity}"
+					# feed: (FirebaseResolver, $route) ->
+					# 	FirebaseResolver.resolve $route.current.params.vanity
+					# authUser: (FirebaseResolver) ->
+					# 	FirebaseResolver.auth()
+					feed: ['Feed', '$route', (Feed, $route) -> Feed.getFeed $route.current.params.vanity]
 			.otherwise
 				redirectTo: '/'
 
